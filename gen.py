@@ -1,8 +1,8 @@
 from random import choice, randint
 import synth
 
-patterns = ["1x1/4", "2x1/8"]
-BPM = 60
+patterns = ["1x1/4", "2x1/8", "3x1/8T", "4x1/16"]
+BPM = 141
 BEAT_LEN_IN_SEC = 60 / BPM
 
 class MusicNote():
@@ -27,10 +27,23 @@ class RhythmStructure():
         self.notes = []
 
         if self.kind == "1x1/4":
-            self.notes.append(MusicNote(BEAT_LEN_IN_SEC / 4, using_rests))
-        if self.kind == "2x1/8":
-            self.notes.append(MusicNote(BEAT_LEN_IN_SEC / 8, using_rests))
-            self.notes.append(MusicNote(BEAT_LEN_IN_SEC / 8, using_rests))
+            self.notes.append(MusicNote(BEAT_LEN_IN_SEC, using_rests))
+        elif self.kind == "2x1/8":
+            self.notes.append(MusicNote(BEAT_LEN_IN_SEC / 2, using_rests))
+            self.notes.append(MusicNote(BEAT_LEN_IN_SEC / 2, using_rests))
+        elif self.kind == "3x1/8T":
+            tri_len = BEAT_LEN_IN_SEC / 3
+            self.notes.append(MusicNote(tri_len, using_rests))
+            self.notes.append(MusicNote(tri_len, using_rests))
+            self.notes.append(MusicNote(tri_len, using_rests))
+        elif self.kind == "4x1/16":
+            LEN_1_16 = BEAT_LEN_IN_SEC / 4
+            note1 = MusicNote(LEN_1_16, using_rests)
+            note2 = MusicNote(LEN_1_16, using_rests)
+            self.notes.append(note1)
+            self.notes.append(note2)
+            self.notes.append(note1)
+            self.notes.append(note2)
     
     def __repr__(self):
         out = "Pattern " + self.kind + ":\n"
@@ -43,9 +56,9 @@ class Melody():
         self.patterns = []
         self.pattA = []
         self.pattB = []
-        for quarter in range(0, 7):
+        for quarter in range(0, 15):
             self.pattA.append(RhythmStructure(using_rests))
-        for quarter in range(0, 7):
+        for quarter in range(0, 15):
             self.pattB.append(RhythmStructure(using_rests))
         self.patterns = self.pattA + self.pattA + self.pattB + self.pattB
 
