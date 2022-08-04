@@ -2,7 +2,7 @@
 
 This program is capable of creating music files with semi-random melodies
 and rhythm patterns, just like in TempleOS.
-I followed [this interpretation](https://www.youtube.com/watch?v=sabX-UqC3DY) when writing the program: 
+I followed [this interpretation](https://www.youtube.com/watch?v=sabX-UqC3DY) when writing the program. 
 
 ### Parameters of sound generation:
 
@@ -38,3 +38,9 @@ In the set of 4 1/16 notes, 1 and 3 note is same, 2 and 4 is same too.
 - [ ] Tune choice
 - [x] Rests choice 
 - [ ] 6/8 Time signature
+
+### Usage
+
+```shell
+python gen.py
+```
