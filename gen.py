@@ -17,7 +17,7 @@ class MusicNote():
         self.length = lenght
     
     def __repr__(self):
-        return f"{self.kind} {self.note:2} {self.length:5.4f}\n"
+        return f"{self.kind}|{self.note:2}|{self.length:5.4f}"
 
 class RhythmStructure():
     def __init__(self, using_rests):
@@ -32,10 +32,22 @@ class RhythmStructure():
             self.notes.append(MusicNote(BEAT_LEN_IN_SEC / 8, using_rests))
     
     def __repr__(self):
-        out = self.kind + "\n"
+        out = "Pattern " + self.kind + ":\n"
         for note in self.notes:
-            out += str(note)
+            out += str(note) + "\n"
         return out
 
-RS = RhythmStructure(False)
-print(RS)
+class Melody():
+    def __init__(self, using_rests):
+        self.patterns = []
+        for quarter in range(0, 7):
+            self.patterns.append(RhythmStructure(using_rests))
+
+    def __repr__(self):
+        out = "MELODY:\n"
+        for pattern in self.patterns:
+            out += repr(pattern)
+        return out
+
+m = Melody(True)
+print(repr(m))
