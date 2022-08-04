@@ -3,9 +3,13 @@
 ## Parameters of sound generation:
 
 **TUNE**: Simple, Normal, Complex
+
 **RESTS**: Off, On
+
 **TIME SIGNATURE**: 4/4, 6/8
+
 **BPM**: 151 (?)
+
 **KEY**: C major (Gn - Gn+1) for n-th octave
 
 The song alvays have 2 distinct sections named A and B.
