@@ -1,7 +1,8 @@
 from random import choice, randint
+import synth
 
 patterns = ["1x1/4", "2x1/8"]
-BPM = 151
+BPM = 60
 BEAT_LEN_IN_SEC = 60 / BPM
 
 class MusicNote():
@@ -40,8 +41,13 @@ class RhythmStructure():
 class Melody():
     def __init__(self, using_rests):
         self.patterns = []
+        self.pattA = []
+        self.pattB = []
         for quarter in range(0, 7):
-            self.patterns.append(RhythmStructure(using_rests))
+            self.pattA.append(RhythmStructure(using_rests))
+        for quarter in range(0, 7):
+            self.pattB.append(RhythmStructure(using_rests))
+        self.patterns = self.pattA + self.pattA + self.pattB + self.pattB
 
     def __repr__(self):
         out = "MELODY:\n"
@@ -49,5 +55,15 @@ class Melody():
             out += repr(pattern)
         return out
 
-m = Melody(True)
-print(repr(m))
+    def run_synth(self):
+        s = synth.WaveGen()
+        for pattern in self.patterns:
+            for i in pattern.notes:
+                if i.kind == "Note":
+                    s.add_note(synth.NOTES[i.note], i.length)
+                elif i.kind == "Rest":
+                    s.add_rest(i.length)
+        s.write_to_file("melody.wav")
+
+mel = Melody(False)
+mel.run_synth()

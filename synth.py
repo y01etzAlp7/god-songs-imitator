@@ -37,8 +37,3 @@ class WaveGen():
         for t in range(int(s_amt)):
             self.samples.append(0)
 
-wg = WaveGen()
-for i in range(40):
-    wg.add_note(NOTES[1], 0.05)
-    wg.add_note(NOTES[7], 0.05)
-wg.write_to_file("out.wav")
