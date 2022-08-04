@@ -1,6 +1,8 @@
 # Simple imitation of God Songs from TempleOS
 
-This program is capable of creating music files with semi-random melodies and rhythm patterns, just like in TempleOS.
+This program is capable of creating music files with semi-random melodies
+and rhythm patterns, just like in TempleOS.
+I followed [this interpretation](https://www.youtube.com/watch?v=sabX-UqC3DY) when writing the program: 
 
 ### Parameters of sound generation:
 
@@ -10,7 +12,7 @@ RESTS: Off, On
 
 TIME SIGNATURE**: 4/4, 6/8
 
-BPM: 151 (?)
+BPM: 141 (?)
 
 KEY: C major (Gn - Gn+1) for n-th octave
 
@@ -31,8 +33,8 @@ In the set of 4 1/16 notes, 1 and 3 note is same, 2 and 4 is same too.
 
 ### Progress:
 
-[+] All rhythmic patterns
-[+] 2 theme melody structure
-[ ] Tune choice
-[+] Rests choice 
-[ ] 6/8 Time signature
+- [x] All rhythmic patterns
+- [x] 2 theme melody structure
+- [ ] Tune choice
+- [x] Rests choice 
+- [ ] 6/8 Time signature
