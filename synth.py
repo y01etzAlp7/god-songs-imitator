@@ -11,7 +11,7 @@ NOTES = [
 
 class WaveGen():
     def __init__(self):
-        self.samplerate = 44100
+        self.samplerate = 44100 / 2
         self.samples = []
 
         self.attack_samples = 100
@@ -42,13 +42,22 @@ class WaveGen():
     def octave_gen(self, freq, t):
         return self.sine_gen(freq, t) / 2 + self.sine_gen(freq/2, t) / 2
 
+    # 1 1
+    # 2 0.5
+    # 3 0.25
+    def scale_bank_gen(self, freq, t, scale):
+        result = 0
+        for i in range(len(scale)):
+            result += self.sine_gen(freq * (i+1), t) * scale[i]
+        return result
+
     def to_samples(self, sec):
         return sec * self.samplerate
 
     def add_note(self, freq, length):
         s_amt = self.to_samples(length)
         for t in range(int(s_amt)):
-            result = 0.5 * self.square_gen(freq, t)
+            result = 0.5 * self.square_gen(freq / 2, t)
             self.samples.append(result)
 
 

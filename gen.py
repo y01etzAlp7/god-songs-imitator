@@ -1,7 +1,7 @@
 from random import choice, randint
 import synth
 
-patterns = ["1x1/4", "2x1/8", "3x1/8T", "4x1/16"]
+patterns = ["1x1/4", "2x1/8", "3x1/8T", "4x1/16", "1x1/8+2x1/16"]
 BPM = 141
 BEAT_LEN_IN_SEC = 60 / BPM
 
@@ -44,6 +44,10 @@ class RhythmStructure():
             self.notes.append(note2)
             self.notes.append(note1)
             self.notes.append(note2)
+        elif self.kind == "1x1/8+2x1/16":
+            self.notes.append(MusicNote(BEAT_LEN_IN_SEC / 2, using_rests))
+            self.notes.append(MusicNote(BEAT_LEN_IN_SEC / 4, using_rests))
+            self.notes.append(MusicNote(BEAT_LEN_IN_SEC / 4, using_rests))
     
     def __repr__(self):
         out = "Pattern " + self.kind + ":\n"
@@ -79,4 +83,5 @@ class Melody():
         s.write_to_file("melody.wav")
 
 mel = Melody(False)
+print(repr(mel))
 mel.run_synth()
