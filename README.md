@@ -1,21 +1,23 @@
-# What are we know about God Songs from TempleOS
+# Simple imitation of God Songs from TempleOS
 
-## Parameters of sound generation:
+This program is capable of creating music files with semi-random melodies and rhythm patterns, just like in TempleOS.
 
-**TUNE**: Simple, Normal, Complex
+### Parameters of sound generation:
 
-**RESTS**: Off, On
+TUNE: Simple, Normal, Complex
 
-**TIME SIGNATURE**: 4/4, 6/8
+RESTS: Off, On
 
-**BPM**: 151 (?)
+TIME SIGNATURE**: 4/4, 6/8
 
-**KEY**: C major (Gn - Gn+1) for n-th octave
+BPM: 151 (?)
+
+KEY: C major (Gn - Gn+1) for n-th octave
 
 The song alvays have 2 distinct sections named A and B.
 Normal song structure: A-A-B-B (?)
 
-## RHYTHMIC PATTERNS:
+### Rhythmic patterns:
 
 - 1/4 note                   (Simple, Normal, Complex)
 - Set of 2 1/8 notes         (Simple, Normal, Complex)
@@ -27,3 +29,10 @@ Normal song structure: A-A-B-B (?)
 
 In the set of 4 1/16 notes, 1 and 3 note is same, 2 and 4 is same too.
 
+### Progress:
+
+[+] All rhythmic patterns
+[+] 2 theme melody structure
+[ ] Tune choice
+[+] Rests choice 
+[ ] 6/8 Time signature

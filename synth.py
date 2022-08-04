@@ -57,7 +57,7 @@ class WaveGen():
     def add_note(self, freq, length):
         s_amt = self.to_samples(length)
         for t in range(int(s_amt)):
-            result = 0.5 * self.square_gen(freq / 2, t)
+            result = 0.5 * self.square_gen(freq, t)
             self.samples.append(result)
 
 
