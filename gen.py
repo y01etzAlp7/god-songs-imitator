@@ -8,14 +8,14 @@ patterns = [
     "1x1/8D+1x1/16"
     ]
 
-BPM = 141
+BPM = 120
 BEAT_LEN_IN_SEC = 60 / BPM
 
 class MusicNote():
     def __init__(self, lenght, using_rests):
         if using_rests:
-            self.kind = choice(["Note", "Rest", "Note"])
-        else:
+            self.kind = choice(["Note", "Rest", "Note", "Note"])
+        elif not using_rests:
             self.kind = "Note"
 
         self.note = ""
@@ -27,7 +27,7 @@ class MusicNote():
         return f"{self.kind}, {self.note:2}" # "|{self.length:5.4f}"
 
 class RhythmStructure():
-    def __init__(self, using_rests, tune_complexity):
+    def __init__(self, tune_complexity, using_rests):
         self.kind = choice(patterns)
 
         self.notes = []
@@ -94,6 +94,6 @@ class Melody():
                     s.add_rest(i.length)
         s.write_to_file("melody.wav")
 
-mel = Melody("Complex", True)
+mel = Melody("Normal", False)
 print(repr(mel))
 mel.run_synth()

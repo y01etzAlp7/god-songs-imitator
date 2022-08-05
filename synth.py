@@ -9,15 +9,18 @@ NOTES = [
     587.3295, 659.2551, 698.4565, 783.9909
 ]
 
+BANK_A = [1, 1, 0, 0.5, 0, 0.25]
+
 class WaveGen():
     def __init__(self):
-        self.samplerate = 44100 / 2
+        self.samplerate = 44100
         self.samples = []
 
         self.attack_samples = 100
 
     def write_to_file(self, filename):
         f = wave.open(filename, "w")
+        self.filter()
         self.filter()
         f.setparams((1, 2, self.samplerate, len(self.samples), "NONE", ""))
         f.writeframes(b"".join(
@@ -57,7 +60,7 @@ class WaveGen():
     def add_note(self, freq, length):
         s_amt = self.to_samples(length)
         for t in range(int(s_amt)):
-            result = 0.5 * self.square_gen(freq, t)
+            result = 0.5 * self.scale_bank_gen(freq / 2, t, BANK_A)
             self.samples.append(result)
 
 
